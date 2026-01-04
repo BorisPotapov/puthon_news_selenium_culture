@@ -77,7 +77,7 @@ def post_request(json_text):
     payload = json.dumps(json_text)
     headers = {
         # 'Authorization': 'Token 2eb2d23fcf6e5abf15c6914ce2cc3df3d6bf43d3',
-        'Authorization': 'Token e5282c2098165fe1b4f9d8e2ef55bb4e4fa6414f', # http://93.85.88.38:82
+        'Authorization': 'Token cc5afce3b1825b137460b617370721cd845ca2e7', # http://93.85.88.38:82
         'Content-Type': 'application/json'
     }
 

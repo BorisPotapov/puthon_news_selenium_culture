@@ -43,7 +43,7 @@ link_news_page = "https://us.fashionnetwork.com"
 driver.get(link_news_page)
 print("open page")
 time.sleep(3)
-list_href_news = driver.find_elements(By.XPATH, '//div[@class="col-6 col-lg-4 home__item-card"]/div/a')
+list_href_news = driver.find_elements(By.XPATH, '//div[@class="col-6 col-lg-4 home__item-card"]//h3/a')
 
 href_list = []
 for link in list_href_news:
