@@ -4,68 +4,68 @@ import requests
 import json
 
 
-def refactoring_text(text):
-
-    # для того чтобы на сервак не сохранялись дублированные статьи, на сервак отправлется текст с оригинальным названием
-    # и переведенной статьей
-    # на сервере название переводиться полностью, а тексе по словно
-    prompt = f"Reduce the article to 300 words and return this text only on Russian. Text: {text}"
-
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCo2y0CiSaTNdri5Cxn7d0QHI3C_mK29ug"
-
-    payload = json.dumps({
-        "contents": [
-            {
-                "parts": [
-                    {
-                        "text": prompt
-                    }
-                ]
-            }
-        ]
-    })
-    headers = {
-        'Content-Type': 'application/json'
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-
-
-    print("AI RESPONSE")
-    print(response.status_code)
-
-    try:
-        print("response.text"),
-        print(response.text)
-
-    except Exception:
-        print("response"),
-        print(response)
-        print("Exception")
-        print(Exception)
-
-    counter = 0
-    while str(response.status_code) == str(429) and counter < 100:
-        time.sleep(30)
-        response = requests.request("POST", url, headers=headers, data=payload)
-
-        print("AI RESPONSE")
-        print(response.status_code)
-
-        try:
-            print("response.text"),
-            print(response.text)
-
-        except Exception:
-            print("response"),
-            print(response)
-            print("Exception")
-            print(Exception)
-
-    if str(response.status_code) == str(201) or str(response.status_code) == str(200):
-        return json.loads(response.text)['candidates'][0]['content']['parts'][0]['text']
-    else:
-        return False
+# def refactoring_text(text):
+#
+#     # для того чтобы на сервак не сохранялись дублированные статьи, на сервак отправлется текст с оригинальным названием
+#     # и переведенной статьей
+#     # на сервере название переводиться полностью, а тексе по словно
+#     prompt = f"Reduce the article to 300 words and return this text only on Russian. Text: {text}"
+#
+#     url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCo2y0CiSaTNdri5Cxn7d0QHI3C_mK29ug"
+#
+#     payload = json.dumps({
+#         "contents": [
+#             {
+#                 "parts": [
+#                     {
+#                         "text": prompt
+#                     }
+#                 ]
+#             }
+#         ]
+#     })
+#     headers = {
+#         'Content-Type': 'application/json'
+#     }
+#
+#     response = requests.request("POST", url, headers=headers, data=payload)
+#
+#
+#     print("AI RESPONSE")
+#     print(response.status_code)
+#
+#     try:
+#         print("response.text"),
+#         print(response.text)
+#
+#     except Exception:
+#         print("response"),
+#         print(response)
+#         print("Exception")
+#         print(Exception)
+#
+#     counter = 0
+#     while str(response.status_code) == str(429) and counter < 100:
+#         time.sleep(30)
+#         response = requests.request("POST", url, headers=headers, data=payload)
+#
+#         print("AI RESPONSE")
+#         print(response.status_code)
+#
+#         try:
+#             print("response.text"),
+#             print(response.text)
+#
+#         except Exception:
+#             print("response"),
+#             print(response)
+#             print("Exception")
+#             print(Exception)
+#
+#     if str(response.status_code) == str(201) or str(response.status_code) == str(200):
+#         return json.loads(response.text)['candidates'][0]['content']['parts'][0]['text']
+#     else:
+#         return False
 
 
 def post_request(json_text):

@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from help_functions.api_requests import post_request, refactoring_text
+from help_functions.api_requests import post_request
 import chromedriver_autoinstaller
 from pyvirtualdisplay import Display
 import time
